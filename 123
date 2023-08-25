@@ -1,0 +1,42 @@
+切换openwrt版本
+	git tag
+	git checkout master
+
+git保留更改
+	git stash 
+	git pull
+	git stach pop
+
+
+第一次编译:
+	./scripts/feeds update -a
+	./scripts/feeds install -a
+	make menuconfig
+	make download -j8
+	make V=s -j1       #8,1线程数
+
+二次编译：
+	make clean 
+	./scripts/feeds clean
+	rm -rf ./tmp && rm -rf .config
+	git pull
+	./scripts/feeds update -a
+	./scripts/feeds install -a
+	make defconfig
+	make menuconfig
+	make download -j8
+	make V=s -j1
+
+单独编译passwall
+	不要git pull
+	#这个是清洁编译
+	make package/luci-app-passwall/{clean,compile} -j4
+	#这个是可以看到具体流程的可以看到错误
+	make package/luci-app-passwall/compile V=99
+
+
+编译文件 bin/targets
+
+修改ip
+	vim /etc/config/network
+
