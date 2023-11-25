@@ -1,0 +1,274 @@
+mixed-port: 7890
+external-controller: 127.0.0.1:9090
+allow-lan: true
+mode: rule
+log-level: debug
+ipv6: false
+
+
+
+geodata-mode: true
+geox-url:                           # 自定义 geodata url, 需要有代理的前提才能下载geoip和geosite
+    geoip: "https://gcore.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+    geosite: "https://gcore.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+    mmdb: "https://gcore.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+    
+    
+profile:
+    store-selected: false              # 存储 select 选择记录
+    store-fake-ip: true
+    
+    
+
+dns:
+  enable: true
+  prefer-h3: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - baidu.com
+    
+  nameserver-policy:
+    'geosite:cn,private':
+      - 202.96.128.86
+       
+    
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    
+ 
+         
+         
+proxies:
+  - name: vless-reality-vision-bwg节点
+    type: vless
+    server: 104.255.64.92
+    port: 56558
+    uuid: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.yahoo.com
+    reality-opts:
+        public-key: VvTCM-gaYynHaamUOmFGrAez7X2_431554hKVxqnNx4
+        short-id: d8ba3a6f
+    client-fingerprint: chrome
+
+
+  - name: hysteria2节点bwg-27630
+    type: hysteria2
+    server: 104.255.64.92
+    port: 27630
+    up: "15 Mbps"
+    down: "15 Mbps"
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn:
+        - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+    
+  - name: hysteria2节点bwg-20000
+    type: hysteria2
+    server: 104.255.64.92
+    port: 20000
+    up: "15 Mbps"
+    down: "15 Mbps"
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn:
+        - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+    
+    
+  - name: hysteria2节点bwg-20001
+    type: hysteria2
+    server: 104.255.64.92
+    port: 20001
+    up: "15 Mbps"
+    down: "15 Mbps"
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn:
+        - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+    
+    
+  - name: hysteria2节点bwg-20002
+    type: hysteria2
+    server: 104.255.64.92
+    port: 20002
+    up: "15 Mbps"
+    down: "15 Mbps"
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn:
+        - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+
+  - name: hysteria2节点bwg-20003
+    type: hysteria2
+    server: 104.255.64.92
+    port: 20003
+    up: "15 Mbps"
+    down: "15 Mbps"
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn:
+        - h3
+    sni: www.bing.com
+    skip-cert-verify: true
+    fast-open: true
+    
+  - name: tuic5节点-bwg-36422
+    server: 104.255.64.92
+    port: 36422
+    type: tuic
+    uuid: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com
+    skip-cert-verify: true  
+
+  - name: tuic5节点-bwg-20010
+    server: 104.255.64.92
+    port: 20010
+    type: tuic
+    uuid: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  - name: tuic5节点-bwg-20011
+    server: 104.255.64.92
+    port: 20011
+    type: tuic
+    uuid: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  - name: tuic5节点-bwg-20012
+    server: 104.255.64.92
+    port: 20012
+    type: tuic
+    uuid: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com
+    skip-cert-verify: true
+
+  - name: tuic5节点-bwg-20013
+    server: 104.255.64.92
+    port: 20013
+    type: tuic
+    uuid: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    password: 9020aa9c-8be5-4993-88ba-ba65103360b7
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: www.bing.com
+    skip-cert-verify: true    
+    
+    
+  
+    
+    
+    
+    
+proxy-groups:
+
+  - name: Proxy
+    type: select
+    proxies:
+      
+      - 负载均衡bwg-Hysteria20000-05
+      - 负载均衡bwg-tuic20010-15
+      - vless-reality-vision-bwg节点
+        
+      
+      
+  - name: 负载均衡bwg-Hysteria20000-05
+    type: load-balance
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    strategy: round-robin
+    proxies:
+     - hysteria2节点bwg-27630
+     - hysteria2节点bwg-20000
+     - hysteria2节点bwg-20001
+     - hysteria2节点bwg-20002
+
+       
+     
+     
+  - name: 负载均衡bwg-tuic20010-15
+    type: load-balance
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    strategy: round-robin
+    proxies:
+     - tuic5节点-bwg-36422
+     - tuic5节点-bwg-20010
+     - tuic5节点-bwg-20011
+     - tuic5节点-bwg-20012
+      
+      
+  
+     
+      
+rule-providers:      
+    cn:
+        type: http
+        behavior: domain
+        interval: 86400
+        path: ./ruleset/cn_domain.yaml
+        url: "https://gcore.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn_domain.yaml"
+      
+rules:
+  - DOMAIN-SUFFIX,nflxvideo.net,Proxy
+  - DOMAIN-SUFFIX,netflix.com,Proxy
+  - DOMAIN-SUFFIX,openai.com,Proxy
+  - DOMAIN-SUFFIX,virmach.com,DIRECT
+  - GEOSITE,!cn,Proxy
+  - GEOIP,!CN,Proxy
+ 
+ 
+  - DOMAIN-SUFFIX,qiyujiasu.com,REJECT
+  - DOMAIN-SUFFIX,360.com,REJECT
+ # - ICMP-REQUEST,DIRECT
+  - GEOIP,CN,DIRECT
+  - GEOSITE,cn,DIRECT
+  - SRC-IP-CIDR,192.168.18.157/32,Proxy
+  - MATCH,Proxy
+  
+  
+  
